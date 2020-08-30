@@ -8,18 +8,18 @@ import java.util.Objects;
 @Getter
 @Setter
 public class Sku {
-    Character id;
-    int price;
-    int count = 0;
-    Promotion promotion;
+    String id;
+    Integer price;
+    //Integer count = 0;
+    //Promotion promotion;
 
-    public Sku(Character id, int price, Promotion promotion) {
+    public Sku(String id, int price, Promotion promotion) {
         this.id = id;
         this.price = price;
-        this.promotion = promotion;
+        //this.promotion = promotion;
     }
 
-    public void add(int i) {
+    /*public void add(int i) {
         this.count += i;
     }
 
@@ -39,7 +39,7 @@ public class Sku {
         minus(1);
     }
 
-    public long getSkuTotal() {
+    /*public long getSkuTotal() {
         long tot = promotion.calculate(count, price);
         System.out.println("Sku id : " + id + " with count : " + count + " estimates to : " + tot + " under the Promotion : " + promotion.type);
         return tot;
@@ -47,7 +47,7 @@ public class Sku {
 
     public void reset() {
         this.count = 0;
-    }
+    }*/
 
     @Override
     public boolean equals(Object o) {

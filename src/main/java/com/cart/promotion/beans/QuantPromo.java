@@ -2,18 +2,18 @@ package com.cart.promotion.beans;
 
 public class QuantPromo extends Promotion{
 
-    private int eligibleCnt;
+    private int buys;
 
-    public QuantPromo(int quantity, int offer) {
+    public QuantPromo(int buys, int offerPrice) {
         this.type = "Quant";
-        this.eligibleCnt = quantity;
-        this.offerPrice = offer;
+        this.buys = buys;
+        this.offerPrice = offerPrice;
     }
 
-    @Override
+    //@Override
     public long calculate(int quantity, int price) {
-        int setCnt = quantity / eligibleCnt;
-        int result = (setCnt * this.offerPrice) + (quantity % eligibleCnt) * price;
+        int setCnt = quantity / buys;
+        int result = (setCnt * this.offerPrice) + (quantity % buys) * price;
         return result;
     }
 }
