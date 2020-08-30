@@ -11,9 +11,9 @@ public class QuantPromo extends Promotion{
     }
 
     //@Override
-    public long calculate(int quantity, int price) {
+    public long calculate(int quantity, Sku sku) {
         int setCnt = quantity / buys;
-        int result = (setCnt * this.offerPrice) + (quantity % buys) * price;
+        int result = (setCnt * this.offerPrice) + (quantity % buys) * sku.price;
         return result;
     }
 }

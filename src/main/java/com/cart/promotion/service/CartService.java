@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
 public class CartService {
@@ -23,11 +22,12 @@ public class CartService {
     public Long orderValuation(List<String> skuList) {
         Map<Sku, Integer> skuBuys = groupSkus(skuList);
         Long total = estimate(skuBuys);
+        System.out.println(skuList + " => total : " + total);
         return total;
     }
 
-    private Long estimate(Map<Sku, Integer> skuBuys) {
-        return engine.compute(skuBuys);
+    private Long estimate(Map<Sku, Integer> skuOrders) {
+        return engine.compute(skuOrders);
     }
 
     private Map<Sku, Integer> groupSkus(List<String> skuList) {
@@ -35,7 +35,6 @@ public class CartService {
         skuList.forEach(s -> {
             Sku sku = skuMapper.getSku(s);
             skuBuys.put(sku, skuBuys.getOrDefault(sku, 0) + 1);
-            //skus.add(sku);
         });
         return skuBuys;
     }

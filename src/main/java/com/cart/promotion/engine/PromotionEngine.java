@@ -20,19 +20,19 @@ public class PromotionEngine {
     SkuMapper skuMapper;
 
 
-    public Long compute(Map<Sku, Integer> skuBuys) {
+    public Long compute(Map<Sku, Integer> skuOrders) {
         Map<Sku, Long> skuTotals = new HashMap<>();
-        skuBuys.forEach( (sku, cnt) -> {
+        skuOrders.forEach( (sku, cnt) -> {
             Promotion promotion = skuMapper.getPromo(sku);
             long val = 0l;
             switch ((promotion.getType())) {
                 case "Quant" :
                     QuantPromo quantPromo = (QuantPromo) promotion;
-                    val = quantPromo.calculate(cnt, sku.getPrice());
+                    val = quantPromo.calculate(cnt, sku);
                     break;
                 case "Combo" :
                     ComboPromo comboPromo = (ComboPromo) promotion;
-                    val = comboPromo.calculate(skuBuys, cnt, sku.getPrice());
+                    val = comboPromo.calculate(skuOrders, cnt, sku);
             }
             skuTotals.put(sku, val);
         });
