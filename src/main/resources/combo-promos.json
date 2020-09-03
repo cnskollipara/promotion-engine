@@ -1,6 +1,5 @@
 [
   {
-    "type" : "combo",
     "comboSkus" : ["C", "D"],
     "offerPrice" : 30
   }

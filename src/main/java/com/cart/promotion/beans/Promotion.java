@@ -6,6 +6,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public abstract class Promotion {
-    protected String type;
+    protected PromotionType type;
     protected int offerPrice;
 }

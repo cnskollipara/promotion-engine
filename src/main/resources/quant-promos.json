@@ -1,12 +1,10 @@
 [
   {
-    "type" : "quant",
     "sku" : "A",
     "buys" : 3,
     "offerPrice" : 130
   },
   {
-    "type" : "quant",
     "sku" : "B",
     "buys" : 2,
     "offerPrice" : 45

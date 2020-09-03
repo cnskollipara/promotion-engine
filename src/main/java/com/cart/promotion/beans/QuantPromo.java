@@ -1,11 +1,13 @@
 package com.cart.promotion.beans;
 
+import static com.cart.promotion.beans.PromotionType.Quantitative;
+
 public class QuantPromo extends Promotion{
 
     private int buys;
 
     public QuantPromo(int buys, int offerPrice) {
-        this.type = "Quant";
+        this.type = Quantitative;
         this.buys = buys;
         this.offerPrice = offerPrice;
     }

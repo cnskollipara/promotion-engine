@@ -7,6 +7,8 @@ import java.util.Map;
 import java.util.OptionalInt;
 import java.util.Set;
 
+import static com.cart.promotion.beans.PromotionType.Combo;
+
 @Getter
 @Setter
 public class ComboPromo extends Promotion {
@@ -14,7 +16,7 @@ public class ComboPromo extends Promotion {
     private Set<Sku> comboSkus;
 
     public ComboPromo(Set<Sku> combos, int offer) {
-        this.type = "Combo";
+        this.type = Combo;
         this.comboSkus = combos;
         this.offerPrice = offer;
     }

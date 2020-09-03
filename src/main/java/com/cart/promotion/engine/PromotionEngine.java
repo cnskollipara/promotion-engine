@@ -10,8 +10,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.OptionalInt;
-import java.util.Set;
 
 @Component
 public class PromotionEngine {
@@ -20,22 +18,22 @@ public class PromotionEngine {
     SkuMapper skuMapper;
 
 
-    public Long compute(Map<Sku, Integer> skuOrders) {
+    public Map<Sku, Long> compute(Map<Sku, Integer> skuOrders) {
         Map<Sku, Long> skuTotals = new HashMap<>();
         skuOrders.forEach( (sku, cnt) -> {
             Promotion promotion = skuMapper.getPromo(sku);
             long val = 0l;
-            switch ((promotion.getType())) {
-                case "Quant" :
+            switch (promotion.getType()) {
+                case Quantitative:
                     QuantPromo quantPromo = (QuantPromo) promotion;
                     val = quantPromo.calculate(cnt, sku);
                     break;
-                case "Combo" :
+                case Combo:
                     ComboPromo comboPromo = (ComboPromo) promotion;
                     val = comboPromo.calculate(skuOrders, cnt, sku);
             }
             skuTotals.put(sku, val);
         });
-        return skuTotals.values().stream().mapToLong(x -> x).sum();
+        return skuTotals;
     }
 }

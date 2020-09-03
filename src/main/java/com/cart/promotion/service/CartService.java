@@ -1,7 +1,5 @@
 package com.cart.promotion.service;
 
-import com.cart.promotion.beans.ComboPromo;
-import com.cart.promotion.beans.QuantPromo;
 import com.cart.promotion.beans.Sku;
 import com.cart.promotion.engine.PromotionEngine;
 import com.cart.promotion.mapper.SkuMapper;
@@ -27,7 +25,8 @@ public class CartService {
     }
 
     private Long estimate(Map<Sku, Integer> skuOrders) {
-        return engine.compute(skuOrders);
+        Map<Sku,Long> skuTotals = engine.compute(skuOrders);
+        return skuTotals.values().parallelStream().reduce(0l, Long::sum);
     }
 
     private Map<Sku, Integer> groupSkus(List<String> skuList) {
