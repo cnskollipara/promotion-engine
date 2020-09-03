@@ -10,44 +10,11 @@ import java.util.Objects;
 public class Sku {
     String id;
     Integer price;
-    //Integer count = 0;
-    //Promotion promotion;
 
-    public Sku(String id, int price, Promotion promotion) {
+    public Sku(String id, int price) {
         this.id = id;
         this.price = price;
-        //this.promotion = promotion;
     }
-
-    /*public void add(int i) {
-        this.count += i;
-    }
-
-    public void add() {
-        this.count++;
-    }
-
-    public void minus(int i) {
-        if (this.count - i < 0) {
-            this.count = 0;
-        }else {
-            this.count -= i;
-        }
-    }
-
-    public void minus() {
-        minus(1);
-    }
-
-    /*public long getSkuTotal() {
-        long tot = promotion.calculate(count, price);
-        System.out.println("Sku id : " + id + " with count : " + count + " estimates to : " + tot + " under the Promotion : " + promotion.type);
-        return tot;
-    }
-
-    public void reset() {
-        this.count = 0;
-    }*/
 
     @Override
     public boolean equals(Object o) {
