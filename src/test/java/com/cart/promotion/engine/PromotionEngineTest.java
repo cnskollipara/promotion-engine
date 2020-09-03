@@ -68,7 +68,7 @@ public class PromotionEngineTest {
         skuQuantMap.put(skuMapper.getSku("D"), 1);
         Map<Sku, Long> skuTotals = promotionEngine.compute(skuQuantMap);
         Assert.assertNotNull("sku totals not to be empty", skuTotals);
-        Assert.assertEquals("number of sku level totals to be matched with sku quantities", skuQuantMap.size(), skuTotals.size());
+        Assert.assertEquals("count of sku level totals to be matched with sku quantities of the cart", skuQuantMap.size(), skuTotals.size());
         Map<Sku, Long> expectedSkuTotals = new HashMap<>();
         expectedSkuTotals.put(skuMapper.getSku("A"), 130l);
         expectedSkuTotals.put(skuMapper.getSku("B"), 120l);
@@ -77,7 +77,7 @@ public class PromotionEngineTest {
         for (Map.Entry<Sku, Long> entry : skuTotals.entrySet()) {
             Sku sku = entry.getKey();
             Long expectedValue = expectedSkuTotals.get(sku);
-            Assert.assertEquals("Expected sku total matched", expectedValue, entry.getValue());
+            Assert.assertEquals("sku total matched", expectedValue, entry.getValue());
         }
     }
 }
